@@ -96,7 +96,7 @@ Open your browser and point it to http://localhost:8888 - you should see the Swa
 
 #### Backup - if you weren't able to install petstore locally: 
 
-Use hosted petstore instead - navigate to http://nordictestingdays.testkube.io - you should see the same petstore as above.
+Use [public Petstore](https://petstore3.swagger.io/) instead - you should see the same petstore as above.
 
 ![images/swaggerui.png](images/swaggerui.png)
 
@@ -114,11 +114,13 @@ Steps:
 ```javascript
 describe('Petstore Testing', () => {
     it('Visits PetStore', () => {
-        cy.visit('https://petstore3.swagger.io/')
+        cy.visit('http://localhost:8888/')
+        // cy.visit('https://petstore3.swagger.io/') - uncomment if using public petstore
         cy.get('.title').should('contain.text', "Swagger Petstore - OpenAPI 3.0")
     })
 })
 ```
+
 8. Run test in Cypress runner
 9. Add some more assertions / actions to test
 10. (Push to a public github repo if possible)
@@ -163,18 +165,18 @@ Steps:
 
 #### Backup: use hosted cluster
 
-Go to Testkube dashboard at http://nordictestingdays.testkube.io:8001
+Go to Testkube dashboard at https://workshop.testkube.io
 
 ### 6. Add Tests to Testkube with UI
 
 Steps:
-1. Export postman collection and add as test in local dashboard 
-2. Add Cypress test from Git repository in local dashboard
+1. Add exported Postman collection as test in dashboard 
+2. Add Cypress test from Git repository in dashboard
 
 #### Backup: Create tests in hosted cluster
 
 Same as above but use hosted dashboard instead
-- you can use the provided cypress / postman tests if you weren't able to create these locally
+- you can use the provided Cypress / Postman tests if you weren't able to create these locally
 - be sure to use unique names for the created tests since other attendees might be doing the same!
 
 ### 7. Run Tests with Testkube through UI or CLI
@@ -183,21 +185,23 @@ Steps:
 1. Run Tests in local Testkube using Dashboard or CLI
 2. See results in dashboard
 
-**Backup**: run tests in hosted cluster
+**Backup**: run tests using either CLI or UI in hosted cluster
 
 ### 8. Create & Run TestSuite containing both API and UI tests
+
+This step requires a working CLI since Testsuites can't yet be created using the UI.
 
 Steps:
 1. Create TestSuite using CLI  
 2. Run TestSuite through dashboard or CLI
 3. See results
 
-**Backup**: run existing testsuites in hosted cluster
+**Backup**: run existing Testsuite in hosted cluster
 
 ### 9. Schedule test execution from CI/CD - GitHub Action ?
 
-Steps:Demo using GitHub repo and hosted testkube
-
+Steps: 
+- Watch demo using GitHub repo and hosted Testkube
 
 ### 10. Bonus: Add a Loadtest with k6
 
