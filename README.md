@@ -10,6 +10,7 @@ Time: 13:30 - 15:30 EEST (GMT+3), June 3rd, 2022 - https://sched.co/zanV
 
 If you want to get ahead of things you can install
 - Docker / Kubernetes / Kubectl to set up a local k8s cluster
+  - Optional: Google Cloud CLI if you want to use our provided cluster instead
 - Cypress
 - Postman
 - In local cluster:
@@ -26,17 +27,78 @@ If you want to get ahead of things you can install
   - Kind: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
   - Docker: enable Kubernetes ?
 - Install kubectl: https://kubernetes.io/docs/tasks/tools/
-- Test installation with kubectl commands (see readme)
+- Test installation with kubectl commands:
 
-**Backup**: Install kubectl only and download kubeconfig for hosted cluster
+```
+kubectl get all
+kubectl get all -n kube-system
+```
 
-- Commands in readme
+(as long as you don't get any errors - output will vary)
 
-### 2. Install Demo Application in local cluster
+#### Backup if you can't install Kubernetes
+
+You can use our temporary cluster instead - but you will still need to install kubectl and the Google Cloud CLI
+- Install kubectl from https://kubernetes.io/docs/tasks/tools/
+- Install Google Cloud CLI from https://cloud.google.com/sdk/docs/install
+- Download provided kubeconfig at ... to `~/.kube/config`
+- Replace `PATHTOGOOGLECLOUDSDK` in the downloaded file with the path where you installed the gcloud SDK 
+- Test installation with same kubectl commands as above
+
+#### If you can't install either Kubernetes or Kubectl/Google Cloud CLI then skip this step!
+
+### 2. Install Demo Application in local cluster 
 
 Steps:
-1. Apply petstore deployment (from github repo)
+1. Apply petstore deployment to your local cluster:
+
+```
+kubectl apply -f petstore-deployment.yaml
+```
+
+You should see a success message... now run
+
+```
+kubectl get all
+```
+
+which should eventually show the deployed petstore service (could take a while):
+
+```
+NAME                            READY   STATUS    RESTARTS   AGE
+pod/petstore-749fbb9656-6mp7z   1/1     Running   0          17h
+pod/petstore-749fbb9656-g9f69   1/1     Running   0          17h
+pod/petstore-749fbb9656-tbkxb   1/1     Running   0          17h
+
+NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+service/petstore     ClusterIP   10.15.247.121   <none>        80/TCP    17h
+
+NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/petstore   3/3     3            3           17h
+
+NAME                                  DESIRED   CURRENT   READY   AGE
+replicaset.apps/petstore-749fbb9656   3         3         3       17h
+```
+
 2. Set up port-forwarding and access through browser / CURL locally
+
+You now have petstore running in local kubernetes cluster - run the following command to 
+expose it from your cluster so you can access it through your browser:
+
+```
+kubectl port-forward deployment/petstore 8888:8080
+..
+Forwarding from 127.0.0.1:8888 -> 8080
+Forwarding from [::1]:8888 -> 8080
+```
+
+Open your browser and point it to http://localhost:8888 - you should see the Swagger-UI
+
+#### Backup - if you weren't able to install petstore locally: 
+
+Use hosted petstore instead - navigate to http://nordictestingdays.testkube.io - you should see the same petstore as above.
+
+![images/swaggerui.png](images/swaggerui.png)
 
 **Backup**: access demo petstore in hosted cluster
 
@@ -46,32 +108,48 @@ Steps:
 1. Download and install from cypress.io
 2. Create empty folder for tests
 3. Create new project
-4. Record a simple test for the petstore UI
+4. Record a simple test for the Petstore UI
 5. Save test locally
 6. (Push to a public github repo if possible)
 
-**Backup**: provide tests in GitHub repo against hosted petstore UI
+#### Backup : watch the live demo!
 
-### 4. Install Postman & Create API Tests (15 minutes)
+Precreated Cypress tests for hosted petstore are available in [cypress folder](cypress)
+
+### 4. Install Postman & Create API Tests 
 
 Steps:
 
 1. Install and run Postman Desktop app
 2. Create empty workspace
-3. Import Petstore OpenAPI def (?)
-4. Create simple test for inventory operation
-5. Save collection
+3. Import PetStore OpenAPI def from https://petstore3.swagger.io/api/v3/openapi.json
+4. Set collection-level baseUrl variable to the endpoint of your local service - or to the hosted petstore url `https://petstore3.swagger.io/api/v3`
+5. Execute GET store/inventory operation, make sure you get a response
+6. Create simple test for inventory response - add test script that validates the approved property:
+```javascript
+pm.test("My first test", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.approved).to.eql(50);
+});
+```
+7. Export collection to local file
 
-**Backup**: provide collection on GitHub against hosted petstore API
+#### Backup : watch the live demo!
+
+Precreated Postman tests for hosted Petstore API are available in [postman folder](postman)
 
 ### 5. Install Testkube or access hosted Testkube
+
+We'll start with a short overview of Testkube and will show the hosted dashboard.
 
 Steps:
 1. Install Testkube - https://kubeshop.github.io/testkube/installing/
 2. Run cli commands to validate installation / access
 3. Start Testkube dashboard locally
 
-**Backup**: use hosted cluster, skip step 3 above
+#### Backup: use hosted cluster
+
+Go to Testkube dashboard at http://nordictestingdays.testkube.io:8001
 
 ### 6. Add Tests to Testkube with UI
 
@@ -79,7 +157,11 @@ Steps:
 1. Export postman collection and add as test in local dashboard 
 2. Add Cypress test from Git repository in local dashboard
 
-**Backup**: create tests in hosted cluster, possibly using provided collection
+#### Backup: Create tests in hosted cluster
+
+Same as above but use hosted dashboard instead
+- you can use the provided cypress / postman tests if you weren't able to create these locally
+- be sure to use unique names for the created tests since other attendees might be doing the same!
 
 ### 7. Run Tests with Testkube through UI or CLI
 
