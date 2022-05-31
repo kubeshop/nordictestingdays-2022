@@ -124,6 +124,7 @@ Steps:
 2. Create empty workspace
 3. Import PetStore OpenAPI def from https://petstore3.swagger.io/api/v3/openapi.json
 4. Set collection-level baseUrl variable to the endpoint of your local service - or to the hosted petstore url `https://petstore3.swagger.io/api/v3`
+![img.png](images/postman-set-baseurl.png)
 5. Execute GET store/inventory operation, make sure you get a response
 6. Create simple test for inventory response - add test script that validates the approved property:
 ```javascript
@@ -132,7 +133,9 @@ pm.test("My first test", function () {
     pm.expect(jsonData.approved).to.eql(50);
 });
 ```
-7. Export collection to local file
+7. Run operation to see that test passes
+![img_1.png](images/postman-run-test.png)
+8. Export collection to local file
 
 #### Backup : watch the live demo!
 
