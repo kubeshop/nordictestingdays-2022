@@ -107,10 +107,21 @@ Use hosted petstore instead - navigate to http://nordictestingdays.testkube.io -
 Steps:
 1. Download and install from cypress.io
 2. Create empty folder for tests
-3. Create new project
-4. Record a simple test for the Petstore UI
-5. Save test locally
-6. (Push to a public github repo if possible)
+3. Create new project for the empty folder
+4. Delete sample tests
+5. Create a new test named "petstore.spec.js"
+6. Open that file in your IDE and replace its contents with the following:
+```javascript
+describe('Petstore Testing', () => {
+    it('Visits PetStore', () => {
+        cy.visit('https://petstore3.swagger.io/')
+        cy.get('.title').should('contain.text', "Swagger Petstore - OpenAPI 3.0")
+    })
+})
+```
+8. Run test in Cypress runner
+9. Add some more assertions / actions to test
+10. (Push to a public github repo if possible)
 
 #### Backup : watch the live demo!
 
