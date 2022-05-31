@@ -94,7 +94,7 @@ Forwarding from [::1]:8888 -> 8080
 
 Open your browser and point it to http://localhost:8888 - you should see the Swagger-UI
 
-#### Backup - if you weren't able to install petstore locally: 
+#### Backup - if you weren't able to install Petstore locally: 
 
 Use [public Petstore](https://petstore3.swagger.io/) instead - you should see the same petstore as above.
 
@@ -102,7 +102,7 @@ Use [public Petstore](https://petstore3.swagger.io/) instead - you should see th
 
 **Backup**: access demo petstore in hosted cluster
 
-### 3. Install Cypress & Create tests (15 minutes)
+### 3. Install Cypress & Create tests 
 
 Steps:
 1. Download and install from cypress.io
@@ -185,7 +185,9 @@ Steps:
 1. Run Tests in local Testkube using Dashboard or CLI
 2. See results in dashboard
 
-**Backup**: run tests using either CLI or UI in hosted cluster
+#### Backup 
+
+- Run provided tests using either CLI or UI in hosted cluster
 
 ### 8. Create & Run TestSuite containing both API and UI tests
 
@@ -196,7 +198,9 @@ Steps:
 2. Run TestSuite through dashboard or CLI
 3. See results
 
-**Backup**: run existing Testsuite in hosted cluster
+#### Backup 
+
+- Run provided Testsuite in hosted cluster using dashboard UI
 
 ### 9. Schedule test execution from CI/CD - GitHub Action ?
 
