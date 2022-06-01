@@ -148,7 +148,8 @@ pm.test("My first test", function () {
 ```
 7. Run operation to see that test passes
 ![img_1.png](images/postman-run-test.png)
-8. Export collection to local file
+8. Remove all other operations from collection so only the inventory is left
+9. Export collection to local file
 
 #### Backup : watch the live demo!
 
@@ -171,7 +172,11 @@ Go to Testkube dashboard at https://workshop.testkube.io
 
 Steps:
 1. Add exported Postman collection as test in dashboard 
+![img.png](images/add-postman-test.png)
+![img_2.png](images/added-postman-test.png)
 2. Add Cypress test from Git repository in dashboard
+![img_1.png](add-cypress-test.png)
+![img_3.png](images/added-cypress-test.png)
 
 #### Backup: Create tests in hosted cluster
 
@@ -182,8 +187,9 @@ Same as above but use hosted dashboard instead
 ### 7. Run Tests with Testkube through UI or CLI
 
 Steps:
-1. Run Tests in local Testkube using Dashboard or CLI
-2. See results in dashboard
+1. Run Tests in local Testkube using Dashboard or CLI and see results in Dashboard
+![img_4.png](images/executed-postman-test.png)
+
 
 #### Backup 
 
