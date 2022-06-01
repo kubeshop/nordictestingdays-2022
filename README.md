@@ -292,10 +292,13 @@ You should now see the created Testsuite in the UI:
 
 - Run provided Testsuite in hosted cluster using dashboard UI
 
-### 9. Schedule test execution from CI/CD - GitHub Action ?
+### 9. Schedule test execution from CI/CD 
+
+We will show how to automate the execution of a testsuite using GitHub actions - have a look 
+at the [run-testsuite.yaml](.github/workflows/run-testsuite.yaml) workflow.
 
 Steps: 
-- Watch demo using GitHub repo and hosted Testkube
+- Watch demo using GitHub repo and hosted Testkube!
 
 ## Nice Work!
 
