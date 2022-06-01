@@ -47,13 +47,6 @@ jobs:
           # Installing testkube kubectl plugin:
           bash < <(curl -sSLf https://kubeshop.github.io/testkube/install.sh )
 
-          # Downloading test suite:
-          curl -LOs https://raw.githubusercontent.com/kubeshop/nordictestingdays-2022/main/testsuite/testsuite.json
-
           # Running Test suite:
-          cat testsuite.json | kubectl testkube create testsuite --name workshop-testkube-testsuite
-
-          # Checking if Test suite was created
-          kubectl get testsuites -ntestkube
-
+          kubectl testkube run testsuite workshop-testkube-testsuite -f
 
