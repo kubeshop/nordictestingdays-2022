@@ -220,7 +220,7 @@ Steps:
 You should see the added test in the list of tests
 ![img_2.png](images/added-postman-test.png)
 2. Add Cypress test from Git repository in dashboard
-![img_1.png](add-cypress-test.png)
+![img_1.png](images/add-cypress-test.png)
 You should see the added test in the list of tests
 ![img_3.png](images/added-cypress-test.png)
 
