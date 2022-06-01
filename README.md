@@ -16,7 +16,10 @@ If you want to get ahead of things you can install
 - In local cluster:
   - Petstore sample app
   - Testkube
-  
+
+### Slides
+[Testing your Kubernetes applications with Cypress and Postman - Tallinn 2022](https://github.com/kubeshop/nordictestingdays-2022/files/8819304/Testing.your.Kubernetes.applications.with.Cypress.and.Postman.-.Tallinn.pdf)
+
 ## Workshop Steps 
 
 ### 1. Install Kubernetes 
