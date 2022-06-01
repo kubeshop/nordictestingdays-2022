@@ -161,8 +161,33 @@ We'll start with a short overview of Testkube and will show the hosted dashboard
 
 Steps:
 1. Install Testkube - https://kubeshop.github.io/testkube/installing/
-2. Run cli commands to validate installation / access
-3. Start Testkube dashboard locally
+2. Run `kubectl testkube version` to validate installation / access
+```shell
+➜  dev kubectl testkube version
+
+████████ ███████ ███████ ████████ ██   ██ ██    ██ ██████  ███████
+   ██    ██      ██         ██    ██  ██  ██    ██ ██   ██ ██
+   ██    █████   ███████    ██    █████   ██    ██ ██████  █████
+   ██    ██           ██    ██    ██  ██  ██    ██ ██   ██ ██
+   ██    ███████ ███████    ██    ██   ██  ██████  ██████  ███████
+                                           /tɛst kjub/ by Kubeshop
+
+
+Client Version 1.2.7
+Server Version v1.2.6
+Commit
+Built by Homebrew
+Build date
+➜  dev
+```
+3. Access Testkube dashboard locally using `kubectl testkube dashboard` command:
+```shell
+➜  dev kubectl testkube dashboard
+
+The dashboard is accessible here: http://localhost:8080/apiEndpoint?apiEndpoint=localhost:8088/v1 🥇
+The API is accessible here: http://localhost:8088/v1/info 🥇
+Port forwarding is started for the test results endpoint, hit Ctrl+c (or Cmd+c) to stop 🥇
+```
 
 #### Backup: use hosted cluster
 
@@ -173,23 +198,24 @@ Go to Testkube dashboard at https://workshop.testkube.io
 Steps:
 1. Add exported Postman collection as test in dashboard 
 ![img.png](images/add-postman-test.png)
+You should see the added test in the list of tests
 ![img_2.png](images/added-postman-test.png)
 2. Add Cypress test from Git repository in dashboard
 ![img_1.png](add-cypress-test.png)
+You should see the added test in the list of tests
 ![img_3.png](images/added-cypress-test.png)
 
 #### Backup: Create tests in hosted cluster
 
 Same as above but use hosted dashboard instead
-- you can use the provided Cypress / Postman tests if you weren't able to create these locally
-- be sure to use unique names for the created tests since other attendees might be doing the same!
+- You can use the provided Cypress / Postman tests if you weren't able to create these locally
+- Be sure to use unique names for the created tests since other attendees might be doing the same!
 
 ### 7. Run Tests with Testkube through UI or CLI
 
 Steps:
 1. Run Tests in local Testkube using Dashboard or CLI and see results in Dashboard
 ![img_4.png](images/executed-postman-test.png)
-
 
 #### Backup 
 
