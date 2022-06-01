@@ -96,7 +96,7 @@ Open your browser and point it to http://localhost:8888 - you should see the Swa
 
 #### Backup - if you weren't able to install Petstore locally: 
 
-Use [public Petstore](https://petstore3.swagger.io/) instead - you should see the same petstore as above.
+Use [hosted Petstore](https://petstore.testkube.io/) instead - you should see the same Petstore as above.
 
 ![images/swaggerui.png](images/swaggerui.png)
 
@@ -115,7 +115,7 @@ Steps:
 describe('Petstore Testing', () => {
     it('Visits PetStore', () => {
         cy.visit('http://localhost:8888/')
-        // cy.visit('https://petstore3.swagger.io/') - uncomment if using public petstore
+        // cy.visit('https://petstore.testkube.io/') - uncomment if using public petstore
         cy.get('.title').should('contain.text', "Swagger Petstore - OpenAPI 3.0")
     })
 })
@@ -123,7 +123,24 @@ describe('Petstore Testing', () => {
 
 8. Run test in Cypress runner
 9. Add some more assertions / actions to test
-10. (Push to a public github repo if possible)
+10. Add a package.json file to your local folder containing the following (required by Testkube):
+```json
+{
+  "name": "cypress-petstore-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "petstore.spec.js",
+  "scripts": {
+    "test": "cypress run petstore.spec.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^8.5.0"
+  }
+}
+```
+11. (Push to a public github repo if possible)
 
 #### Backup : watch the live demo!
 
@@ -135,8 +152,8 @@ Steps:
 
 1. Install and run Postman Desktop app
 2. Create empty workspace
-3. Import PetStore OpenAPI def from https://petstore3.swagger.io/api/v3/openapi.json
-4. Set collection-level baseUrl variable to the endpoint of your local service - or to the hosted petstore url `https://petstore3.swagger.io/api/v3`
+3. Import PetStore OpenAPI def from https://petstore.testkube.io/api/v3/openapi.json
+4. Set collection-level baseUrl variable to the endpoint of your local service - or to the hosted petstore url `https://petstore.testkube.io/api/v3`
 ![img.png](images/postman-set-baseurl.png)
 5. Execute GET store/inventory operation, make sure you get a response
 6. Create simple test for inventory response - add test script that validates the approved property:
@@ -216,6 +233,7 @@ Same as above but use hosted dashboard instead
 Steps:
 1. Run Tests in local Testkube using Dashboard or CLI and see results in Dashboard
 ![img_4.png](images/executed-postman-test.png)
+![img.png](images/executed-cypress-test.png)
 
 #### Backup 
 

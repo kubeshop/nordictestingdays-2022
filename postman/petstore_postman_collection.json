@@ -129,7 +129,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://petstore3.swagger.io/api/v3",
+			"value": "https://petstore.testkube.io/api/v3",
 			"type": "string"
 		}
 	]
