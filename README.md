@@ -121,6 +121,7 @@ describe('Petstore Testing', () => {
 ```
 
 8. Run test in Cypress runner
+![img.png](images/cypress-test.png)
 9. Add some more assertions / actions to test - see https://docs.cypress.io/guides/core-concepts/interacting-with-elements 
 
 *If you have access to a public GitHub repo*
