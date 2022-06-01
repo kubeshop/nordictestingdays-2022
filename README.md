@@ -41,8 +41,9 @@ kubectl get all -n kube-system
 You can use our temporary cluster instead - but you will still need to install kubectl and the Google Cloud CLI
 - Install kubectl from https://kubernetes.io/docs/tasks/tools/
 - Install Google Cloud CLI from https://cloud.google.com/sdk/docs/install
-- Download provided kubeconfig at ... to `~/.kube/config`
-- Replace `PATHTOGOOGLECLOUDSDK` in the downloaded file with the path where you installed the gcloud SDK 
+- Download provided kubeconfig at ... to a local file
+- Replace `PATHTOGOOGLECLOUDSDK` in the downloaded file with the path where you installed the gcloud SDK
+- Set a local KUBECONFIG env variable to point to the downloaded file
 - Test installation with same kubectl commands as above
 
 #### If you can't install either Kubernetes or Kubectl/Google Cloud CLI then skip this step!
