@@ -1,0 +1,59 @@
+name: Running a testsuite
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GKE_CLUSTER_NAME: testkube-workshop
+  GKE_ZONE: us-east1-c
+  POSTMAN_TEST_FILE_NANE: petstore_postman_collection.json
+  POSTMAN_TEST_FILE_PATH: postman
+
+jobs:
+  run_testsuite:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      # Setup gcloud CLI
+      - uses: google-github-actions/auth@v0
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - run: |-
+          gcloud --quiet auth configure-docker
+
+      # Get the GKE credentials so we can deploy to the cluster
+      - uses: google-github-actions/get-gke-credentials@v0
+        with:
+          cluster_name: ${{ env.GKE_CLUSTER_NAME }}
+          location: ${{ env.GKE_ZONE }}
+
+      # Runnning test suite
+      - name: Run test suite
+        run: |-
+          # enabling debug mode
+          set -x
+
+          # Installing testkube kubectl plugin:
+          bash < <(curl -sSLf https://kubeshop.github.io/testkube/install.sh )
+
+          # Downloading test suite:
+          curl -LOs https://raw.githubusercontent.com/kubeshop/nordictestingdays-2022/main/testsuite/testsuite.json
+
+          # Running Test suite:
+          cat testsuite.json | kubectl testkube create testsuite --name workshop-testkube-testsuite
+
+          # Checking if Test suite was created
+          kubectl get testsuites -ntestkube
+
+
