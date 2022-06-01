@@ -19,7 +19,7 @@ If you want to get ahead of things you can install
   
 ## Workshop Steps 
 
-### 1. Install Kubernetes (Minikube or Kind?)
+### 1. Install Kubernetes 
 
 - Install Docker
 - Install Kubernetes - one of:
@@ -41,7 +41,7 @@ kubectl get all -n kube-system
 You can use our temporary cluster instead - but you will still need to install kubectl and the Google Cloud CLI
 - Install kubectl from https://kubernetes.io/docs/tasks/tools/
 - Install Google Cloud CLI from https://cloud.google.com/sdk/docs/install
-- Download provided kubeconfig at ... to a local file
+- Download [provided kubeconfig](kubeconfig/ntd-kubeconfig) to a local file
 - Replace `PATHTOGOOGLECLOUDSDK` in the downloaded file with the path where you installed the gcloud SDK
 - Set a local KUBECONFIG env variable to point to the downloaded file
 - Test installation with same kubectl commands as above
@@ -51,7 +51,7 @@ You can use our temporary cluster instead - but you will still need to install k
 ### 2. Install Demo Application in local cluster 
 
 Steps:
-1. Apply petstore deployment to your local cluster:
+1. Download and apply [petstore deployment](petstore/deployment.yaml) to your local cluster:
 
 ```
 kubectl apply -f petstore-deployment.yaml
@@ -83,7 +83,7 @@ replicaset.apps/petstore-749fbb9656   3         3         3       17h
 
 2. Set up port-forwarding and access through browser / CURL locally
 
-You now have petstore running in local kubernetes cluster - run the following command to 
+You now have Petstore running in local kubernetes cluster - run the following command to 
 expose it from your cluster so you can access it through your browser:
 
 ```
@@ -95,13 +95,11 @@ Forwarding from [::1]:8888 -> 8080
 
 Open your browser and point it to http://localhost:8888 - you should see the Swagger-UI
 
-#### Backup - if you weren't able to install Petstore locally: 
-
-Use [hosted Petstore](https://petstore.testkube.io/) instead - you should see the same Petstore as above.
-
 ![images/swaggerui.png](images/swaggerui.png)
 
-**Backup**: access demo petstore in hosted cluster
+#### Backup - if you weren't able to install Petstore locally:
+
+Use [hosted Petstore](https://petstore.testkube.io/) instead - you should see the same Petstore as above.
 
 ### 3. Install Cypress & Create tests 
 
@@ -123,8 +121,11 @@ describe('Petstore Testing', () => {
 ```
 
 8. Run test in Cypress runner
-9. Add some more assertions / actions to test
-10. Add a package.json file to your local folder containing the following (required by Testkube):
+9. Add some more assertions / actions to test - see https://docs.cypress.io/guides/core-concepts/interacting-with-elements 
+
+*If you have access to a public GitHub repo*
+
+10. Add a package.json file to your local folder containing the following (required by Testkube in stop):
 ```json
 {
   "name": "cypress-petstore-test",
@@ -141,7 +142,7 @@ describe('Petstore Testing', () => {
   }
 }
 ```
-11. (Push to a public github repo if possible)
+11. Add the entire folder to your Git repo and push it to GitHub
 
 #### Backup : watch the live demo!
 
@@ -272,10 +273,13 @@ run both above created tests in sequence with a 1 second paused in between:
 See provided [testsuite.json](testsuite/testsuite.json) file.
 
 Steps:
-1. Create TestSuite using CLI - save the above to a file and pass it to `kubectl testkube create testsuite`:
+1. Create TestSuite using CLI 
+- save the above to a file
+- replace the names of the referenced tests with the ones you created 
+- pass the file to `kubectl testkube create testsuite` with the following command:
 ```
-cat testsuite/testsuite.json | kubectl testkube create testsuite --name workshop-testkube-testsuite
-TestSuite created workshop-testkube-testsuite 🥇
+cat testsuite/testsuite.json | kubectl testkube create testsuite --name <your unique testsuite name>
+TestSuite created ... 🥇
 ```
 
 You should now see the created Testsuite in the UI:
@@ -293,11 +297,6 @@ You should now see the created Testsuite in the UI:
 Steps: 
 - Watch demo using GitHub repo and hosted Testkube
 
-### 10. Bonus: Add a Loadtest with k6
+## Nice Work!
 
-Steps:
-1. Create test for provided k6 script in repository
-2. Run test using dashboard or CLI
-3. See results
-
-
+If you got this far you are on your way to kubernetes testing nirvana - congrats!
