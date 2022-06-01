@@ -1,0 +1,21 @@
+{
+  "name": "workshop-testkube-suite",
+  "description": "Sample Testkube Testsuite",
+  "steps": [
+    {
+      "execute": {
+        "name": "my-postman-collection"
+      }
+    },
+    {
+      "delay": {
+        "duration": 1000
+      }
+    },
+    {
+      "execute": {
+        "name": "my-cypress-test"
+      }
+    }
+  ]
+}

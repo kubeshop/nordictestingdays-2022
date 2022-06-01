@@ -241,12 +241,47 @@ Steps:
 
 ### 8. Create & Run TestSuite containing both API and UI tests
 
-This step requires a working CLI since Testsuites can't yet be created using the UI.
+This step requires a working CLI since Testsuites can't yet be created using the UI. Our Testsuite will 
+run both above created tests in sequence with a 1 second paused in between:
+
+```json
+{
+  "name": "workshop-testkube-testsuite",
+  "description": "Sample Testkube Testsuite",
+  "steps": [
+    {
+      "execute": {
+        "name": "my-postman-collection"
+      }
+    },
+    {
+      "delay": {
+        "duration": 1000
+      }
+    },
+    {
+      "execute": {
+        "name": "my-cypress-test"
+      }
+    }
+  ]
+}
+```
+
+See provided [testsuite.json](testsuite/testsuite.json) file.
 
 Steps:
-1. Create TestSuite using CLI  
-2. Run TestSuite through dashboard or CLI
-3. See results
+1. Create TestSuite using CLI - save the above to a file and pass it to `kubectl testkube create testsuite`:
+```
+cat testsuite/testsuite.json | kubectl testkube create testsuite --name workshop-testkube-testsuite
+TestSuite created workshop-testkube-testsuite 🥇
+```
+
+You should now see the created Testsuite in the UI:
+![img.png](images/created-testsuite.png)
+
+2. Run TestSuite through dashboard or CLI and see results:
+![img_1.png](images/testsuite-executing.png)
 
 #### Backup 
 
