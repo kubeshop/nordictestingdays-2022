@@ -129,7 +129,7 @@ describe('Petstore Testing', () => {
 
 *If you have access to a public GitHub repo*
 
-10. Add a package.json file to your local folder containing the following (required by Testkube in stop):
+10. Add a package.json file to your local folder containing the following (required by Testkube in step 7 below):
 ```json
 {
   "name": "cypress-petstore-test",
@@ -238,8 +238,16 @@ Same as above but use hosted dashboard instead
 
 Steps:
 1. Run Tests in local Testkube using Dashboard or CLI and see results in Dashboard
+
+In the UI run tests by clicking the "Run" button in the top right:
 ![img_4.png](images/executed-postman-test.png)
 ![img.png](images/executed-cypress-test.png)
+
+The corresponding ClI command for running these tests is:
+
+```
+kubectl testkube run test <name of test>
+```
 
 #### Backup 
 
@@ -291,6 +299,12 @@ You should now see the created Testsuite in the UI:
 
 2. Run TestSuite through dashboard or CLI and see results:
 ![img_1.png](images/testsuite-executing.png)
+
+Run with the CLI command
+
+```
+kubectl testkube run testsuite <name of testsuite>
+```
 
 #### Backup 
 
