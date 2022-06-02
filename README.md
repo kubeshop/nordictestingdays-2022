@@ -24,7 +24,7 @@ If you want to get ahead of things you can install
 
 ### 1. Install Kubernetes 
 
-- Install Docker
+- Install Docker - https://docs.docker.com/get-docker/
 - Install Kubernetes - one of:
   - Minikube: download / install from https://minikube.sigs.k8s.io/docs/start/
   - Kind: https://kind.sigs.k8s.io/docs/user/quick-start/#installation
