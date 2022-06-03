@@ -54,6 +54,14 @@ You can use our temporary cluster instead - but you will still need to install k
 - Download [provided kubeconfig](kubeconfig/ntd-kubeconfig) to a local file
 - Replace `PATHTOGOOGLECLOUDSDK` in the downloaded file with the path where you installed the gcloud SDK
 - Set a local KUBECONFIG env variable to point to the downloaded file
+
+On MacOS the command is
+```
+export KUBECONFIG=<path-to-downloaded-and-modified-file>
+```
+
+For Windows you can follow these instructions: https://www.virtualizationhowto.com/2021/06/install-kubectl-on-windows-and-create-kubeconfig-file/
+
 - Test installation with same kubectl commands as above
 
 #### If you can't install either Kubernetes or Kubectl/Google Cloud CLI then skip this step!
