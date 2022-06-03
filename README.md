@@ -1,4 +1,4 @@
-# Nordic Testing Days Workshop
+# NordicTestingDays 2022 Workshop
 
 Time: 13:30 - 15:30 EEST (GMT+3), June 3rd, 2022 - https://sched.co/zanV
 
