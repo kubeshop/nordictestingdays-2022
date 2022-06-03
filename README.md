@@ -18,7 +18,8 @@ If you want to get ahead of things you can install
   - Testkube
 
 ### Slides
-[Testing your Kubernetes applications with Cypress and Postman - Tallinn 2022](https://github.com/kubeshop/nordictestingdays-2022/files/8819304/Testing.your.Kubernetes.applications.with.Cypress.and.Postman.-.Tallinn.pdf)
+[Testing your Kubernetes applications with Cypress and Postman_nordictesting2022](https://github.com/kubeshop/nordictestingdays-2022/files/8830458/Testing.your.Kubernetes.applications.with.Cypress.and.Postman_nordictesting2022.pdf)
+
 
 ## Workshop Steps 
 
