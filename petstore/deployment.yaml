@@ -18,7 +18,7 @@ metadata:
   name: petstore
   namespace: default
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: petstore
@@ -34,3 +34,4 @@ spec:
             - containerPort: 8080
           name: service
           image: swaggerapi/petstore3:unstable
+          imagePullPolicy: Always

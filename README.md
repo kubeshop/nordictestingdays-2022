@@ -22,6 +22,12 @@ If you want to get ahead of things you can install
 
 ## Workshop Steps 
 
+The workshop is divided into three sections:
+1. Preparing the local environment (optional), steps 1, 2 
+2. Creating UI and API tests with Cypress and Postman, steps 3, 4  
+3. Running tests in Kubernetes with Testkube, steps 5-9 
+   - Step 5 is optional, step 9 is demo only
+
 ### 1. Install Kubernetes 
 
 - Install Docker - https://docs.docker.com/get-docker/
