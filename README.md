@@ -115,7 +115,7 @@ Open your browser and point it to http://localhost:8888 - you should see the Swa
 
 ![images/swaggerui.png](images/swaggerui.png)
 
-#### Backup - if you weren't able to install Petstore locally:
+#### Backup - if you weren't able to install or access Petstore locally:
 
 Use [hosted Petstore](https://petstore.testkube.io/) instead - you should see the same Petstore as above.
 
