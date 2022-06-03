@@ -9,11 +9,11 @@ Time: 13:30 - 15:30 EEST (GMT+3), June 3rd, 2022 - https://sched.co/zanV
 ### Tools that will be installed on local machine during the workshop
 
 If you want to get ahead of things you can install
-- Docker / Kubernetes / Kubectl to set up a local k8s cluster
+- Docker / Kubernetes / Kubectl to set up a local k8s cluster (optional)
   - Optional: Google Cloud CLI if you want to use our provided cluster instead
 - Cypress
 - Postman
-- In local cluster:
+- In local cluster (optional):
   - Petstore sample app
   - Testkube
 
